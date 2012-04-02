@@ -11,7 +11,11 @@
 
 		public Login(string username, string password)
 		{
-			Username = username;
+            string tempUsername;
+
+            //Removes spaces and uppercase characters from the provided username
+            tempUsername = username.Replace(" ", string.Empty);
+            Username = tempUsername.ToLower() ;
 			Password = password;
 		}
 	}
