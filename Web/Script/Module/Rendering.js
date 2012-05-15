@@ -14,7 +14,7 @@ function render()
 function renderWithSearchForm()
 {
     var items = parseArguments(arguments);
-    if(hasSetAutomaticUpdatesPrivilege())
+    if(hasSearchPrivilege())
         items = [getSearchFormContainer()].concat(items);
     render(items);
 }
