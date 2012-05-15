@@ -52,9 +52,9 @@
     <PreBuildEvent>generateAssemblyInfo</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>mkdir ..\..\..\RiotControl\bin\Debug
-copy Update.exe ..\..\..\RiotControl\bin\Debug
-mkdir ..\..\..\RiotShield\bin\x86\Debug
-copy Update.exe ..\..\..\RiotShield\bin\x86\Debug</PostBuildEvent>
+    <PostBuildEvent>mkdir -p ..\..\..\RiotControl\bin\Debug
+cp -f Update.exe ..\..\..\RiotControl\bin\Debug
+mkdir -p ..\..\..\RiotShield\bin\Debug
+cp -f Update.exe ..\..\..\RiotShield\bin\Debug</PostBuildEvent>
   </PropertyGroup>
 </Project>
