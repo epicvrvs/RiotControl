@@ -54,7 +54,7 @@
   <PropertyGroup>
     <PostBuildEvent>mkdir -p ..\..\..\RiotControl\bin\Debug
 cp -f Update.exe ..\..\..\RiotControl\bin\Debug
-mkdir -p ..\..\..\RiotShield\bin\x86\Debug
-cp -f Update.exe ..\..\..\RiotShield\bin\x86\Debug</PostBuildEvent>
+mkdir -p ..\..\..\RiotShield\bin\Debug
+cp -f Update.exe ..\..\..\RiotShield\bin\Debug</PostBuildEvent>
   </PropertyGroup>
 </Project>
