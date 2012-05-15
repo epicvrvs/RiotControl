@@ -58,7 +58,7 @@
       <HintPath>..\References\Nil.dll</HintPath>
     </Reference>
     <Reference Include="RiotGear">
-      <HintPath>..\RiotGear\bin\x86\Debug\RiotGear.dll</HintPath>
+      <HintPath>..\RiotGear\bin\Debug\RiotGear.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
