@@ -1,0 +1,7 @@
+cd RiotGear
+xbuild
+cd ../RiotUpdate
+xbuild
+cd ../RiotShield
+xbuild
+
