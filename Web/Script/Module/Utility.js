@@ -75,7 +75,8 @@ function padWithZeroes(number, zeroes)
 
 function getTimestampString(timestamp)
 {
-    var date = getDateFromTimestamp(timestamp);
+    var dateOffset = new Date().getTimezoneOffset();
+    var date = getDateFromTimestamp(timestamp - dateOffset * 60);
     return date.getUTCFullYear() + '-' + padWithZeroes(date.getUTCMonth() + 1) + '-' + padWithZeroes(date.getUTCDate()) + ' ' + padWithZeroes(date.getUTCHours()) + ':' + padWithZeroes(date.getUTCMinutes()) + ':' + padWithZeroes(date.getUTCSeconds());
 }
 
