@@ -63,13 +63,17 @@ function getSummonerOverview(summoner, statistics)
     if(hasRunesPrivilege())
         overviewFields2.push(['Runes', viewRunesLink]);
 
+    if(hasUpdatePrivilege())
+    {
+	var manualUpdateContainer = span();
+        manualUpdateContainer.add(anchor('Update now', function() { updateSummoner(manualUpdateContainer, region, summoner.AccountId); } ));
+        overviewFields2.push(['Manual update', manualUpdateContainer]);
+    }
+
     var updateDescription = 'Is updated automatically';
     if(hasSetAutomaticUpdatesPrivilege())
     {
         //Requesting updates requires writing permissions
-        var manualUpdateContainer = span();
-        manualUpdateContainer.add(anchor('Update now', function() { updateSummoner(manualUpdateContainer, region, summoner.AccountId); } ));
-        overviewFields2.push(['Manual update', manualUpdateContainer]);
         var automaticUpdateContainer = span();
         automaticUpdateContainer.add(getAutomaticUpdateDescription(automaticUpdateContainer, region, summoner));
         overviewFields2.push([updateDescription, automaticUpdateContainer]);
