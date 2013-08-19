@@ -158,12 +158,34 @@ table.statistics td img
 table.statistics td.items img
 {
     margin: 0;
-    float: left;
 }
 
 table.statistics td.items
 {
     width: 192px;
+}
+
+table.statistics ul.itemDesc {
+   background:#223344;
+    position:absolute;
+    width:200px;
+    display:none;
+    color:#FFFFFF;
+	padding:10px;
+	left:0px;
+	z-index:2;
+	//list-style:none outside none;
+	list-style-type:none;
+}
+
+table.statistics .item {
+	position:relative;
+	float:left;
+}
+
+table.statistics .item:hover .itemDesc {
+    display:block;
+    left:32px;
 }
 
 table.statistics td.spells img
@@ -331,21 +353,32 @@ table.graphDescription
     margin-bottom: 1.5em;
 }
 
-#summonerGames td
+#summonerGames th
 {
-    border: 1px solid black;
+	padding:0 0.2em 0 0.2em;
 }
 
+#summonerGames td
+{
+	padding:0 0.3em 0 0.3em;
+    border: 1px solid black;
+}
+#summonerGames .date {
+	min-width:5em;
+}
+#summonerGames .items {
+	min-width:192px;
+}
 #summonerGames
 {
     text-align: left;
     width: 100%;
+	margin-bottom:500px;
 }
 
 #summonerGamesContainer
 {
     margin: 2em;
-    min-width: 122em;
 }
 
 #returnFromMatchHistory

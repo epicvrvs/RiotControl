@@ -2,25 +2,25 @@ function getSummonerGamesTable(summoner, games)
 {
     var titles =
         [
-            'Champion',
-            'Map',
-            'Mode',
-            'Outcome',
-            'Date',
-            'Side',
-            'Spells',
-            'K',
-            'D',
-            'A',
-            'MK',
-            'NK',
-            'Gold',
-            'Items',
-            'Level',
-            'Premade',
-            'Ping',
-            'Time in queue',
-            'Game ID',
+            ['Champion','champion'],
+            ['Map','map'],
+            ['Mode','mode'],
+            ['Outcome','outcome'],
+            ['Date','date'],
+            ['Side','side'],
+            ['Spells','spells'],
+            ['K','kills'],
+            ['D','deaths'],
+            ['A','assissts'],
+            ['MK','minionKills'],
+            ['NK','neutralKills'],
+            ['Gold','gold'],
+            ['Items','items'],
+            ['Lvl','level'],
+            ['Premade','premade'],
+            ['Ping','ping'],
+            ['Queue Time','queueTime'],
+            ['Game ID','gameID'],
         ];
 
     var container = diverse();
@@ -35,8 +35,12 @@ function getSummonerGamesTable(summoner, games)
     output.add(caption('Games of ' + summoner.SummonerName));
 
     var row = tableRow();
-    titles.forEach(function(title) {
-        row.add(tableHead(title));
+    titles.forEach(function(pair) {
+        var title = pair[0];
+        var className = pair[1];
+        var head = tableHead(title);
+        head.className = className;
+        row.add(head);
     });
     output.add(row);
     games.forEach(function(game) {
@@ -45,12 +49,28 @@ function getSummonerGamesTable(summoner, games)
 
         var items = [];
         game.Items.forEach(function(itemId) {
-            if(itemId == 0)
-                items.push(icon('Item/Small/Blank.png', 'Unused'));
-            else
-            {
+            if(itemId == 0) {
+                var itemDiv = diverse();
+                itemDiv.className = 'item';
+                itemDiv.add(icon('Item/Small/Blank.png', 'Unused'));
+                items.push(itemDiv);
+            } else {
+
                 var item = getItem(itemId);
-                items.push(icon('Item/Small/' + (item.description == 'Unknown' ? 'Unknown' : itemId) + '.png', item.name));
+                var itemDiv = diverse();
+                itemDiv.className = 'item';
+                var _icon = icon('Item/Small/' + (item.description == 'Unknown' ? 'Unknown' : itemId) + '.png', item.name);
+                itemDiv.add(_icon);
+                
+                var theList = list();
+                theList.className = 'itemDesc';
+                theList.add(listElement(text(item.name)));
+                theList.add(listElement(text('')));
+                item.description.split('\n').forEach(function(line) {
+                    theList.add(listElement(text(line)));
+                });
+                itemDiv.add(theList);
+                items.push(itemDiv);
             }
         });
 
